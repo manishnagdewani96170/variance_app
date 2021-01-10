@@ -52,11 +52,24 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
+  gem "shoulda-matchers"
+  # TODO: seeds seems to be not used
+  gem "factory_girl-seeds" # fixtures in factory girl style
+  gem "database_cleaner"
+  gem "vcr"
+  gem "rspec-grape"
+  gem 'rails-controller-testing'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
 end
+
+#lightweight api structure with documentation
+gem "grape"
+gem "grape-swagger"
+gem "grape-jbuilder"
+gem 'hashie-forbidden_attributes'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
