@@ -1,0 +1,137 @@
+inherit_gem:
+  rubocop-rails_config:
+    - config/rails.yml
+
+AllCops:
+  TargetRubyVersion: 2.6.6
+  DisplayCopNames: true
+  Include:
+    - "**/*.rb"
+    - "**/*.jbuilder"
+    - "**/*.rake"
+    - "config.ru"
+    - "Gemfile"
+    - "Rakefile"
+  Exclude:
+    - "bin/**/*"
+    - "db/schema.rb"
+    - "log/**/*"
+    - "public/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - "Guardfile"
+
+Layout/AlignHash:
+  EnforcedLastArgumentHashStyle: ignore_implicit
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Lint/UnusedBlockArgument:
+  Enabled: true
+
+# TODO: Add
+# Metrics/AbcSize:
+#   Enabled: false
+#   Max: 35
+
+Metrics/LineLength:
+  Max: 160 # TODO: Update
+  Exclude:
+    - "config/**"
+    - "lib/tasks/**"
+    - "db/migrate/**/*.rb"
+    - "spec/**/*_spec.rb"
+    - "integration_specs/**/*_spec.rb"
+
+Metrics/MethodLength:
+  Max: 50
+
+Metrics/ModuleLength:
+  Max: 130 # TODO: Reconsider this value, 120 perhaps
+  Exclude:
+    - "spec/**/*_spec.rb"
+    - "integration_specs/**/*_spec.rb"
+
+Naming/PredicateName:
+  Exclude:
+    - "spec/**/*"
+    - "integration_specs/**/*"
+    - "config/initializers/paperclip.rb"
+
+Rails:
+  Enabled: true
+
+Rails/Output:
+  Enabled: false
+
+Rails/OutputSafety:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Exclude:
+    - "spec/**/*_spec.rb"
+    - "integration_specs/**/*_spec.rb"
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - "app/controllers/api/**/*.rb"
+
+Style/Documentation:
+  Enabled: false
+
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Style/LambdaCall:
+  EnforcedStyle: call
+  Exclude:
+    - "app/**/*.jbuilder"
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  IgnoredMethods:
+    - require
+    - require_relative
+    - puts
+  Exclude:
+    - "config.ru"
+    - "Gemfile"
+    - "lib/**/*.rake"
+    - "spec/**/*.rb"
+    - "integration_specs/**/*.rb"
+    - "db/migrate/**/*.rb"
+    - "config/**/*.rb"
+    - "app/**/*.jbuilder"
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/SymbolArray:
+  MinSize: 3
+
+Style/WordArray:
+  MinSize: 3
+
+Metrics/BlockLength:
+  Max: 50 # TODO: Reduce to 25
+  Exclude:
+    - "app/views/**/*"
+    - "config/**/*.rb"
+    - "db/**/*.rb"
+    - "lib/**/*.rake"
+    - "spec/**/*"
+    - "integration_specs/**/*"
+    - "app/controllers/api/**/*.rb"
