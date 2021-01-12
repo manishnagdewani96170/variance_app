@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+if Token.count == 0
+  puts "-------- seed started -------"
+  Token.create(auth_token: Token.generate_auth_token)
+  puts "-------- seed ended -------"
+end  
