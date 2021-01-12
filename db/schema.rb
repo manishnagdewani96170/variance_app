@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_12_155457) do
+ActiveRecord::Schema.define(version: 2021_01_12_172011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "datasets", force: :cascade do |t|
+    t.decimal "temperature", precision: 5, scale: 2
+    t.datetime "recorded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tokens", force: :cascade do |t|
     t.string "auth_token"
