@@ -8,7 +8,7 @@ module API
        
         desc "List of datasets"
         get "", jbuilder: Datasets.view_path("datasets/index") do
-          datasets  = list_scope
+          datasets  = Dataset.all
           @datasets = paginate(datasets)
         end
         
@@ -42,8 +42,9 @@ module API
         end
 
         desc "Get Variance"       
-        get "/variance", jbuilder: Datasets.view_path("datasets/show") do
-          
+        get "/variance" do
+          variance = Dataset.get_variance
+          { status: 200, variance: variance }
         end
       end
     end

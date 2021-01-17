@@ -20,14 +20,6 @@ module API::V1
           }
         end
 
-        rescue_from CanCan::AccessDenied do |e|
-          message, full_message = format_message(e, CanCan::AccessDenied)
-          error_response status: 403, message: {
-            error: "Access Denied",
-            message: message
-          }
-        end
-
         rescue_from APIError do |e|
           error_response status: e.status, message: {
             error: e.name,
