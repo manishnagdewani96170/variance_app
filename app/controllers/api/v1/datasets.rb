@@ -43,6 +43,7 @@ module API
 
         desc "Get Variance"       
         get "/variance", jbuilder: Datasets.view_path("datasets/show") do
+          
         end
       end
     end
