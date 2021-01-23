@@ -7,9 +7,18 @@ module API
       resources :datasets do
        
         desc "List of datasets"
+        params do
+          use :pagination, per_page: 20, max_per_page: 30, offset: false
+        end
         get "", jbuilder: Datasets.view_path("datasets/index") do
           datasets  = Dataset.all
-          @datasets = paginate(datasets)
+          @datasets = paginate(Kaminari.paginate_array(datasets))
+        end
+
+        desc "Get Variance"       
+        get "/variance" do
+          variance = Dataset.get_variance
+          { status: 200, variance: variance }
         end
         
         desc "Show Dataset"
@@ -40,12 +49,7 @@ module API
         post "", jbuilder: Datasets.view_path("datasets/show") do
           @dataset = Dataset.create(params[:dataset])
         end
-
-        desc "Get Variance"       
-        get "/variance" do
-          variance = Dataset.get_variance
-          { status: 200, variance: variance }
-        end
+        
       end
     end
   end

@@ -2,8 +2,9 @@ module API::V1
   module Concerns
     module Controller
       extend ActiveSupport::Concern
-
+        
       included do
+        include Grape::Kaminari
 
         version "v1"
         format :json

@@ -72,6 +72,7 @@ end
 gem "grape"
 gem "grape-swagger"
 gem "grape-jbuilder"
+gem "grape-kaminari"
 gem 'hashie-forbidden_attributes'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
