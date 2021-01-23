@@ -7,7 +7,8 @@ class TemperatureService
   end
 
   def calculate_variance
-    sum_of_temperature_squares / (total_temperature_records - 1)
+    variance = sum_of_temperature_squares / (total_temperature_records - 1)
+    variance.round(2)
   end
   
   def calculate_mean

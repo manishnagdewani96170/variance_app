@@ -2,7 +2,7 @@ class Dataset < ApplicationRecord
   #validations
   validates :temperature, numericality: { greater_than_or_equal_to: -273.15 }
 
-  scope :time_specific_temperatures, -> { where(recorded_at: DateTime.now - 1.minute).pluck(:temperature) }
+  scope :time_specific_temperatures, -> { where(recorded_at: DateTime.now.utc - 1.minute).pluck(:temperature) }
 
   def self.get_variance
     temperatures = Dataset.time_specific_temperatures
